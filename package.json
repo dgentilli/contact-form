@@ -1,0 +1,22 @@
+{
+  "name": "contact-form",
+  "version": "1.0.0",
+  "description": "A contact form that allows users to leave contact details and a short message. Perfect for any small business that wants a simple interface for new clients while looking professional. I use a variation of it for the contact form in this portfolio.",
+  "main": "app.js",
+  "scripts": {
+    "test": "test",
+    "start": "node app.js"
+  },
+  "author": "Dave Gentilli",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^6.3.1",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4"
+  },
+  "engines": {
+    "node": "8.12.0",
+    "npm": "6.4.1"
+  }
+}

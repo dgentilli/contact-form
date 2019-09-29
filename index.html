@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Contact Form</title>
+  </head>
+  <link rel="stylesheet" href="./index.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      $("#contact-form").on("submit", function(e) {
+        // prevent the page from refreshing on submit
+        e.preventDefault();
+
+        // serialize form data to send to 'send' API
+        var formData = $("#contact-form").serialize();
+        console.log("Data SENT to server: ", formData);
+
+        // send serialized form data to 'send' API endpoint
+        $.ajax({
+          type: "POST",
+          url: "/api/send",
+          data: formData,
+          // NOTE: this uses an 'error-msg' class which can be added as a custom class for displaying error text in a unique format (ex - red & bold)
+          success: function(response) {
+            // ToDo: display success message to the user, for example:
+            $("#form-submit-message")
+              .text("Thank you for your message!")
+              .removeClass("error-msg");
+            console.log("RESPONSE from server", response);
+          },
+          error: function(err) {
+            $("#form-submit-message")
+              .text(
+                "There was a problem sending your message.  Please try again.  Thank you."
+              )
+              .addClass("error-msg");
+            console.log("err", err);
+          }
+        });
+      });
+    });
+  </script>
+
+  <body>
+    <!-- Contact Form START -->
+    <div class="app-container">
+      <div class="contact-form-wrapper">
+        <h1>Contact Form</h1>
+        <h3>We'll reply as soon as possible!</h3>
+        <form id="contact-form" action="/api/send" method="POST">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <input type="radio" name="title" value="Mr." checked /> Mr.
+              <input type="radio" name="title" value="Ms." /> Ms.
+              <input type="radio" name="title" value="Dr." /> Dr.<br />
+              <br />
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="text"
+                name="name"
+                placeholder="Name"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="text"
+                name="phone"
+                placeholder="Phone"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="text"
+                name="subject"
+                placeholder="Subject"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <textarea
+                class="form-control"
+                name="message"
+                data-gramm="true"
+                spellcheck="false"
+                data-gramm_editor="true"
+                placeholder="Message"
+                required="required"
+              ></textarea>
+            </div>
+            <button type="submit" class="tem-btn move-eff">
+              <span>send</span>
+            </button>
+          </div>
+        </form>
+        <p id="form-submit-message" class="thank-you-message"></p>
+      </div>
+    </div>
+    <!-- Contact Form END -->
+  </body>
+</html>

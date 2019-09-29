@@ -1,0 +1,36 @@
+.app-container {
+  text-align: center;
+}
+
+.contact-form-wrapper {
+  background-color: rgb(233, 230, 230);
+  width: 700px;
+  height: 500px;
+  margin: auto;
+  border: #ccc 1px solid;
+  border-radius: 5%;
+}
+
+#contact-form {
+  width: 200px;
+  margin: auto;
+}
+
+.col-sm-6 {
+  border-radius: 10%;
+  height: 25px;
+}
+
+textarea {
+  height: 75px;
+  width: 200px;
+  margin: auto;
+}
+
+button {
+  width: 150px;
+  height: 50px;
+  border-radius: 12%;
+  box-shadow: 1px 1px #ccc;
+  background-color: rgb(213, 218, 224);
+}
